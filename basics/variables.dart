@@ -22,7 +22,7 @@ main() {
   a
   good
   day ''';
-  print("This is a good day ${2 + 2}  $intro");
+  print("This is a good day ${2 + 2}  $intro \t something \n ");
 
   // justNumber = justNumber + intro;
 
@@ -54,6 +54,10 @@ main() {
 
   // const time = DateTime.now();
 }
+
+
+
+
 
 /// Keywords :
 /// var, int , final, bool, dynamic
