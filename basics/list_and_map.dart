@@ -65,7 +65,7 @@ main() {
   item['name'] = "Dell x11";
   print(item);
 
-  final itemName = item["name"];
+  final itemName = item["naaaaame"];
 
   MapEntry<String, String> discount = MapEntry("discount", "10");
   item.addEntries([discount]);
