@@ -44,6 +44,10 @@ main() {
 
   /// for each loop
 
+  names.forEach((name) {
+    print(name);
+  });
+
   /// while
   int wCount = 0;
   while (wCount < 6) {
