@@ -8,6 +8,7 @@
 // this
 // super
 // extends
+// get/set
 
 class User {
   /// there is always a default constructor function
