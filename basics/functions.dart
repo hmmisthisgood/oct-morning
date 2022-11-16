@@ -1,5 +1,6 @@
 main() {
   final rectArea = areaOfRect(20, 50);
+
   divide(length: 100, breadth: 24);
 
   Function(int a, int b) myFunction = (a, b) {
