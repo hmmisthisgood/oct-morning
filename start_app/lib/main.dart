@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:start_app/screen/container_screen.dart';
+import 'package:start_app/screen/row_and_column_screen.dart';
 
 import 'screen/home_page.dart';
 
@@ -11,7 +13,8 @@ class OurApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return new MaterialApp(
       title: "Our App",
-      home: HomeScreen(),
+      theme: ThemeData(primarySwatch: Colors.purple),
+      home: RowAndColumnScreen(),
     ); // most important widget for the app
   }
 }

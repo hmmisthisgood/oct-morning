@@ -5,9 +5,8 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-      ),
+      body: Container(color: Colors.grey),
+      floatingActionButton: FloatingActionButton(onPressed: () {}),
       bottomNavigationBar: Container(height: 50, color: Colors.green),
       drawer: Drawer(),
     );
