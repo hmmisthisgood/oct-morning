@@ -3,6 +3,7 @@ import 'package:start_app/screen/container_screen.dart';
 import 'package:start_app/screen/row_and_column_screen.dart';
 
 import 'screen/home_page.dart';
+import 'screen/ig_post_screen.dart';
 
 void main() {
   runApp(OurApp());
@@ -14,7 +15,7 @@ class OurApp extends StatelessWidget {
     return new MaterialApp(
       title: "Our App",
       theme: ThemeData(primarySwatch: Colors.purple),
-      home: RowAndColumnScreen(),
+      home: IgHomeScreen(),
     ); // most important widget for the app
   }
 }

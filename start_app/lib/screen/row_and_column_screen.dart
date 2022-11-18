@@ -10,8 +10,8 @@ class RowAndColumnScreen extends StatelessWidget {
         height: double.infinity,
         color: Colors.red.withOpacity(0.2),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Row(
               children: [
@@ -21,7 +21,7 @@ class RowAndColumnScreen extends StatelessWidget {
               ],
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Container(height: 100, color: Colors.purple, width: 100),
                 Container(height: 100, color: Colors.white, width: 100),
