@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:start_app/screen/container_screen.dart';
 import 'package:start_app/screen/row_and_column_screen.dart';
+import 'package:start_app/screen/stack_screen.dart';
 
 import 'screen/home_page.dart';
 import 'screen/ig_post_screen.dart';
@@ -14,8 +15,8 @@ class OurApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return new MaterialApp(
       title: "Our App",
-      theme: ThemeData(primarySwatch: Colors.purple),
-      home: IgHomeScreen(),
+      theme: ThemeData(primarySwatch: Colors.purple, textTheme: TextTheme()),
+      home: StackScreen(),
     ); // most important widget for the app
   }
 }
