@@ -1,9 +1,11 @@
 main() {
   var price = "Rs 1000"; // implicit
+
   // price = 500;
   // price = 1500;
 
   int age = 25; // explicit
+
   age = 30;
   age = 100;
 
@@ -22,7 +24,9 @@ main() {
   a
   good
   day ''';
-  print("This is a good day ${2 + 2}  $intro \t something \n ");
+
+  print("This is a good day ${2 + 2}  ${name.length} \t something \n ");
+  print(name);
 
   // justNumber = justNumber + intro;
 
@@ -34,6 +38,11 @@ main() {
 
   /// uncomment this for error
   // anything = anything + "adding string to number";
+
+/*
+multi line
+comment
+*/
 
   anything = "Can be any data type";
   print(anything);
@@ -48,8 +57,7 @@ main() {
   const double pi = 3.1415;
   // pi = 3.1415;
 
-  final DateTime currentTime = DateTime.now();
-
+  final currentTime = DateTime.now();
   print(currentTime);
 
   // const time = DateTime.now();
@@ -69,6 +77,11 @@ main() {
 /// Data types:
 /// Numerica: int, double, num
 /// Text: String
-/// true, false: bool
+/// bool: true, false: bool
 
 //// Map, List, Set
+
+
+
+
+

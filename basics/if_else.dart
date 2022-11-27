@@ -13,6 +13,11 @@ main() {
   }
 
   switch (day) {
+    case "1":
+      break;
+  }
+
+  switch (day) {
     case "Sunday":
       print("it is sunday");
       break;

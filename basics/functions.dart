@@ -1,7 +1,17 @@
+int length = 1000;
+
 main() {
-  final rectArea = areaOfRect(20, 50);
+  num rectArea = areaOfRect("", 0, 111);
+  print(rectArea);
+
+  /// this is a function call
+  testResult();
 
   divide(length: 100, breadth: 24);
+  namedFunc(
+    breadth: 3243,
+    length: 100,
+  );
 
   Function(int a, int b) myFunction = (a, b) {
     print(a * b);
@@ -10,14 +20,30 @@ main() {
 
 /// function definition for a function which calculates
 /// area of rectangle
-num areaOfRect(num breadth, num length) {
-  final _a = length / breadth;
+///
+
+testResult() {}
+
+num areaOfRect(String test, num breadth, num length) {
+  final _a = length / breadth; // 2*1 = 1*2
+  print(_a);
   return _a;
 }
 
+namedFunc({
+  required int length,
+  required int breadth,
+  String test = "",
+}) {}
+
 /// function with named arguments/parameters
 void divide({required num breadth, required num length}) {
-  final _a = length / breadth;
+  num l, b;
+  l = length;
+  b = breadth;
+
+  final _a = l / b;
+
   print(_a);
 }
 
@@ -25,5 +51,5 @@ void divide({required num breadth, required num length}) {
 int randomNumber() => 12;
 
 // 3x+4y+90z=100
-// void 
+// void
 // =>

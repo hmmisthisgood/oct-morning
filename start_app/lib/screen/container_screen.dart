@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 enum Position { top, bottom, left, right }
 
-class ContainerScreen extends StatelessWidget {
+class CS extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Position.top;
@@ -61,10 +61,52 @@ class ContainerScreen extends StatelessWidget {
   }
 }
 
+class ContainerScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Container SCreen", style: TextStyle(color: Colors.white)),
+      ),
+      body: Center(
+        child: Container(
+          height: 200,
+          width: 200,
+          alignment: Alignment.topCenter,
+          padding: EdgeInsets.all(20),
+          decoration: BoxDecoration(
+              color: Colors.grey.withOpacity(0.3),
+              // shape: BoxShape.circle,
+              borderRadius: BorderRadius.circular(30),
+              border: Border.all()),
+          child: Container(
+            height: 100,
+            width: 100,
+            margin: EdgeInsets.all(20),
+            decoration: BoxDecoration(
+                // boxShadow: [BoxShadow()],
+                gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              colors: [Colors.blue, Colors.black],
+            )),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+
+
+
+
+
+
+
 /// For colors: Colors.black,
-/// Color(0xff00FF00)
+/// Color(0xff00FF00) Color(0xff383838)
 /// R, G, B values: 0-255
-/// Color.fromRGBO(255, 0, 255, 1)
+// / Color.fromRGBO(255, 0, 255, 1)
 
 /// screen= Scaffold
 /// Text

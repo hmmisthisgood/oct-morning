@@ -80,6 +80,39 @@ class ModeratorUser extends User {
 
 // extends = used for inhereting
 
+class AUser extends User {
+  // AUser({
+  //   required super.id,
+  //   required super.fullname,
+  //   required super.profilePicture,
+  // });
+
+  AUser(
+      {required int id,
+      required String fullname,
+      required String profilePicture})
+      : super(
+            id: id,
+            fullname: fullname,
+            profilePicture: profilePicture,
+            role: "Admin");
+
+  deletePost() {}
+  kickOutUserOrModerator() {}
+  deleteGroup() {}
+
+  _mfaLogin() {}
+
+  @override
+  login() {
+    /// my code
+    print("custom admin login");
+    _mfaLogin();
+
+    super.login();
+  }
+}
+
 main() {
   final member = User(
       id: 123,
@@ -107,4 +140,9 @@ main() {
   // moderatorUser.likePost();
   // moderatorUser.createPost();
   // moderatorUser.deletePost();
+  User normalUser =
+      User(id: 112343, fullname: "Ram Bahadur", profilePicture: "");
+
+  AUser aUser = AUser(id: 112343, fullname: "Ram Bahadur", profilePicture: "");
+  aUser.deleteGroup();
 }

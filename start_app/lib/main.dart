@@ -1,13 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:start_app/screen/container_screen.dart';
-import 'package:start_app/screen/row_and_column_screen.dart';
+import 'package:start_app/screen/home_screen.dart';
 import 'package:start_app/screen/stack_screen.dart';
 
-import 'screen/home_page.dart';
-import 'screen/ig_post_screen.dart';
-
 void main() {
-  runApp(OurApp());
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: "My App",
+      home: ContainerScreen(),
+    );
+  }
 }
 
 class OurApp extends StatelessWidget {
@@ -21,8 +28,10 @@ class OurApp extends StatelessWidget {
   }
 }
 
-// Stateless widget
+// Stateless widget  
 // Stateful widget
+
+
 
 // MaterialApp
 

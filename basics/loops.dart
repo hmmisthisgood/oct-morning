@@ -10,6 +10,7 @@ main() {
     "Ram",
     "Jack"
   ];
+  List<String> newNames = [];
 
   /// 8
 
@@ -20,8 +21,13 @@ main() {
   //   print(i);
   // }
 
+  for (count; count < 5;) {
+    print(count);
+    count++;
+  }
+
   // loop with list
-  for (count; count < names.length; count++) {
+  for (int count = 0; count < names.length; count++) {
     print(count);
 
     if (count == 3) {
@@ -32,39 +38,57 @@ main() {
       break;
     }
 
+    ///count=0
     final name = names[count];
+    final nn = " My name is $name.";
     print("$count. My name is $name.");
+    newNames.add(nn);
   }
 
-  /// for in loop
+  // /// for in loop
+  // for (String item in names) {
+  //   /// perform some opeartions in list
 
-  for (String abc in names) {
-    print(abc);
-  }
+  // }
 
-  /// for each loop
+  // for (String abc in names) {
+  //   print('From for in : $abc');
+  // }
 
-  names.forEach((name) {
-    print(name);
-  });
+  // /// for each loop
 
-  /// while
-  int wCount = 0;
-  while (wCount < 6) {
-    print("looping with while");
-    wCount++;
-  }
+  // names.forEach(
+  //   (item) {
+  //     print(" Item from For Each: $item");
+  //   },
+  // );
 
-  /// do whil
+  // names.forEach((name) {
+  //   print(name);
+  // });
 
-  do {
-    print("looping with do while");
-    wCount--;
-  } while (wCount > 0);
+  // /// while
+  // int wCount = 0;
+  // while (wCount < 6) {
+  //   print("looping with while");
+  //   wCount++;
+  // }
+
+  // /// do whil
+
+  // do {
+  //   print("looping with do while");
+  //   wCount--;
+  // } while (wCount > 0);
+
+  // int npCount = 0;
+  // while (npCount < 10) {
+  //   print("Neepal");
+  //   npCount++;
+  // }
 }
 
 /// for , while , do while
-
 
 /// break
 /// continue

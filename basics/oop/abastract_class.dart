@@ -1,9 +1,24 @@
 abstract class User {
+  // String fullname;
+  // User(this.fullname);
   login(String username, String password) {
     ///
-    ///
+    /// defition
   }
   logout();
+}
+
+class Adminuser extends User {
+  // Adminuser(super.fullname);
+  // Adminuser(String fullbname) : super(fullbname);
+
+  @override
+  login(String username, String password) {
+    super.login(username, password);
+  }
+
+  @override
+  logout() {}
 }
 
 class MemeberUser extends User {

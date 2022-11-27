@@ -1,7 +1,7 @@
 main() {
   /// For ex: a+b
-  /// operators: a, b
-  /// oprand: +
+  /// operand: a, b
+  /// operators: +
 
   int count = 0;
 
@@ -17,11 +17,12 @@ main() {
   bool isLarge = 5 > 3;
   print(isLarge);
 
-//  logical operators,: && , ||, !
+//  logical operators,: && , ||, !  and= 1*1*1  or:
 //  1<3<5
 
-  bool isThreee = 3 > 1 || 3 > 5;
+  bool isgreater = 3 > 1 || 3 > 5; // true || false
 
+  /// Unary operator
   count++; // suffix
   count--;
   ++count; //prefix
@@ -42,6 +43,8 @@ main() {
       // : 5 < 10
       //     ? "another condition"
       : "fail";
+
+  examPassed = percent > 40 ? "pass" : "fail";
   print(examPassed);
 
   /// null realted operators: ?? , ?. , !
