@@ -82,13 +82,19 @@ class ContainerScreen extends StatelessWidget {
           child: Container(
             height: 100,
             width: 100,
+            alignment: Alignment.center,
             margin: EdgeInsets.all(20),
             decoration: BoxDecoration(
-                // boxShadow: [BoxShadow()],
-                gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              colors: [Colors.blue, Colors.black],
-            )),
+              // boxShadow: [BoxShadow()],
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                colors: [Colors.blue, Colors.black],
+              ),
+            ),
+            child: Text(
+              "Gradient",
+              style: TextStyle(color: Colors.white),
+            ),
           ),
         ),
       ),

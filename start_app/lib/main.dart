@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:start_app/screen/container_screen.dart';
-import 'package:start_app/screen/home_screen.dart';
+import 'package:start_app/screen/row_and_column_screen.dart';
 import 'package:start_app/screen/stack_screen.dart';
+
+import 'screen/ig_post_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "My App",
-      home: ContainerScreen(),
+      home: IgHomeScreen(),
     );
   }
 }
