@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:start_app/util/strings.dart';
 import 'package:start_app/widget/ig_post.dart';
+import 'package:flutter_vector_icons/flutter_vector_icons.dart';
+
+import '../widget/instaggram_post.dart';
 
 class Ig extends StatelessWidget {
   @override
@@ -28,64 +32,17 @@ class IgHomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        /// top user's name and photo section
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        appBar: AppBar(),
+        body: ListView(
           children: [
-            Row(
-              children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(35),
-                  child: Image.network(
-                    personImage,
-                    height: 60,
-                    width: 60,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                Text("maria"),
-              ],
-            ),
-            Icon(Icons.more_horiz)
+            InstagramPost(),
+            InstagramPost(),
+            InstagramPost(),
+            InstagramPost(),
+            InstagramPost(),
+            InstagramPost(),
           ],
-        ),
-
-        /// Post's main image
-        Image.network(imageUrl),
-
-        /// Like, comment, share , save buttons
-
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Row(
-              children: [
-                Icon(Icons.favorite_outline),
-                Icon(Icons.comment),
-                Icon(Icons.send),
-              ],
-            ),
-            Icon(Icons.bookmark_outline)
-          ],
-        ),
-
-        /// Like count
-        Text("2875 likes"),
-
-        Row(
-          children: [
-            /// caption
-            Text("maria  Hi!    q"),
-            Text(
-              "#worldcup",
-              style: TextStyle(color: Colors.blue),
-            )
-          ],
-        ),
-      ]),
-    );
+        ));
   }
 }
 
@@ -107,6 +64,8 @@ class IgHomeScreen extends StatelessWidget {
 /// Icons.home= name of the icons
 /// IconData= the type of icon
 /// 
+
+
 
 /// For scrolling:
 /// - ListView
