@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:start_app/screen/ig_screen_with_builder.dart';
-import 'package:start_app/screen/page_view_screen.dart';
 import 'package:start_app/screen/stack_screen.dart';
 
 void main() {
@@ -12,7 +10,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "My App",
-      home: PageViewScreen(),
+      home: StackScreen(),
     );
   }
 }
