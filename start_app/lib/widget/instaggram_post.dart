@@ -4,6 +4,10 @@ import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import '../util/strings.dart';
 
 class InstagramPost extends StatelessWidget {
+  final String username;
+
+  InstagramPost({required this.username});
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -25,7 +29,7 @@ class InstagramPost extends StatelessWidget {
                   ),
                 ),
                 SizedBox(width: 10),
-                Text("maria"),
+                Text(username),
               ],
             ),
             Icon(Icons.more_horiz)
