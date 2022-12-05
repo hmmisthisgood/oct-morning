@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:start_app/screen/gridview_screen.dart';
 import 'package:start_app/screen/stack_screen.dart';
 
 void main() {
@@ -10,7 +11,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "My App",
-      home: StackScreen(),
+      home: GridViewScreen(),
     );
   }
 }
