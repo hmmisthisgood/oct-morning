@@ -9,7 +9,7 @@ class StackScreen extends StatelessWidget {
     final screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      appBar: AppBar(),
+      // appBar: AppBar(),
       body: Stack(
         children: [
           Image.network(

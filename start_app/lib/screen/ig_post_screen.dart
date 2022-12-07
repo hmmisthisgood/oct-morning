@@ -8,17 +8,17 @@ class IgHomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(),
+        // appBar: AppBar(),
         body: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
-          child: Column(
-            children: [
-              IgPost(),
-              IgPost(),
-              IgPost(),
-            ],
-          ),
-        ));
+      physics: BouncingScrollPhysics(),
+      child: Column(
+        children: [
+          IgPost(),
+          IgPost(),
+          IgPost(),
+        ],
+      ),
+    ));
   }
 }
 

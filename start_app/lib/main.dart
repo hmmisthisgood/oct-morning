@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:start_app/screen/gridview_screen.dart';
 import 'package:start_app/screen/stack_screen.dart';
-import 'package:start_app/screen/tiktok_skeleton.dart';
+
+import 'screen/tab_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -12,7 +13,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "My App",
-      home: TikTokSkeleton(),
+      theme: ThemeData(
+        primarySwatch: Colors.red,
+      ),
+      home: TabScreen(),
     );
   }
 }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:start_app/util/assets.dart';
 
 class TikTokSkeleton extends StatelessWidget {
   const TikTokSkeleton({super.key});
@@ -15,6 +14,7 @@ class TikTokSkeleton extends StatelessWidget {
         color: Colors.grey,
       ),
       body: SafeArea(
+        top: true,
         child: Container(
           height: screenHeight,
           width: screenWidth,
