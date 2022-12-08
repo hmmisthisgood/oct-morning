@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:start_app/screen/gridview_screen.dart';
+import 'package:start_app/screen/bottom_nav_screen.dart';
 import 'package:start_app/screen/stack_screen.dart';
-
-import 'screen/counter_screen.dart';
-import 'screen/tab_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -17,7 +14,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
-      home: CounterScreen(),
+      home: BottomNavScreen(),
     );
   }
 }
