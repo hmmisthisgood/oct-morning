@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:start_app/screen/bottom_nav_screen.dart';
+import 'package:start_app/screen/login_screen.dart';
 import 'package:start_app/screen/stack_screen.dart';
 
 void main() {
@@ -11,10 +12,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "My App",
-      theme: ThemeData(
-        primarySwatch: Colors.red,
-      ),
-      home: BottomNavScreen(),
+      theme: ThemeData(primarySwatch: Colors.purple, textTheme: TextTheme()),
+      home: LoginScreen(),
     );
   }
 }
