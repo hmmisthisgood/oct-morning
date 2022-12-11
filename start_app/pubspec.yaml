@@ -6,13 +6,29 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_vector_icons: 2.0.0
 
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
+  # ui packages
+  flutter_vector_icons: 2.0.0
   cupertino_icons: ^1.0.2
   flutter_svg: ^1.1.6
   animated_bottom_navigation_bar: ^1.1.0
+
+
+  # utils
+  form_field_validator: ^1.1.0
+  
+
+  # data persistence
+
+
+
+
+
+  # firebase pacakages
+
+
+
+  # network and http
 
 dev_dependencies:
   flutter_test:
