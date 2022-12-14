@@ -5,6 +5,7 @@ abstract class User {
     ///
     /// defition
   }
+
   logout();
 }
 

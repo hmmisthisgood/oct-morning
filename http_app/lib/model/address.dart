@@ -8,8 +8,6 @@
 //         "lng": "81.1496"
 //       }
 
-import 'geo.dart';
-
 class Address {
   final String street, suite, city, zipcode;
   Geo geo;
@@ -22,12 +20,37 @@ class Address {
       required this.zipcode,
       required this.geo});
 
-  Address convertJsonToAddress(Map json) {
+  static Address convertJsonToAddress(Map<String, dynamic> json) {
     return Address(
-        street: street,
-        suite: suite,
-        city: city,
-        zipcode: zipcode,
-        geo: Geo.convertJsonToGeo(json['geo']));
+        street: json['street'],
+        suite: json["suite"],
+        city: json["city"],
+        zipcode: json["zipcode"],
+        geo:
+            // json['geo']
+
+            Geo.convertJsonToGeo(json['geo']));
+  }
+
+  Map toMap() {
+    return {};
+  }
+}
+
+// {
+//         "lat": "-37.3159",
+//         "lng": "81.1496"
+//   }
+
+class Geo {
+  final String lattitude, longitude;
+
+  Geo({required this.lattitude, required this.longitude});
+
+  static Geo convertJsonToGeo(Map json) {
+    return Geo(
+      lattitude: json['lat'],
+      longitude: json['lng'],
+    );
   }
 }
