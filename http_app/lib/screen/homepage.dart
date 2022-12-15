@@ -89,6 +89,20 @@ class _HomepageState extends State<Homepage> {
     // http.get(uri).then((value) {});
   }
 
+  postDataToServer() async {
+    final uri = "https://jsonplaceholder.typicode.com/posts/121231";
+
+    try {
+      http.post(Uri.parse(uri), body: {
+        "email": "test@test.com",
+        "password": "password"
+      }, headers: {
+        "Content-Type": "application/json",
+        // "Authorization": "Bearer .....",
+      });
+    } catch (e) {}
+  }
+
 //  condition? ---- : -----;
 
   Widget buildBody() {
