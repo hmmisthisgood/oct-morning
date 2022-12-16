@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:http_app/model/pixabay_image.dart';
 import 'package:http_app/utils/strings.dart';
+import 'package:http_app/widget/instagram_post.dart';
 
 class ImagesScreen extends StatefulWidget {
   const ImagesScreen({super.key});
@@ -28,8 +29,8 @@ class _ImagesScreenState extends State<ImagesScreen> {
         queryParameters: {
           "key": apiKey,
           "page": 1,
-          "per_page": 100,
-          "q": "cars"
+          "per_page": 5,
+          "q": "cars",
         },
       );
 
@@ -58,11 +59,24 @@ class _ImagesScreenState extends State<ImagesScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView.builder(
-          itemCount: pixabayImages.length,
-          itemBuilder: (context, index) {
-            final oneImage = pixabayImages[index];
-            return Image.network(oneImage.largeImageUrl);
-          }),
+        itemCount: pixabayImages.length,
+        itemBuilder: (context, index) {
+          final oneImage = pixabayImages[index];
+
+          return InstagramPost(post: oneImage);
+          // return CachedNetworkImage(
+          //   imageUrl: oneImage.largeImageUrl,
+          //   errorWidget: (context, image, errror) =>
+          //       Text("Could not load image"),
+          //   placeholder: (context, image) => Container(
+          //     color: Color.fromRGBO(Random().nextInt(255),
+          //         Random().nextInt(255), Random().nextInt(255), 0.7),
+          //     height: 200,
+          //     width: double.infinity,
+          //   ),
+          // );
+        },
+      ),
     );
   }
 }
