@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:start_app/screen/bottom_nav_screen.dart';
-import 'package:start_app/screen/login_screen.dart';
+import 'package:start_app/navigation/route_generator.dart';
 import 'package:start_app/screen/stack_screen.dart';
+
+import 'navigation/routes.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,7 +14,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: "My App",
       theme: ThemeData(primarySwatch: Colors.purple, textTheme: TextTheme()),
-      home: LoginScreen(),
+      initialRoute: Routes.loginScreen,
+      onGenerateRoute: customRouteGenerator,
     );
   }
 }

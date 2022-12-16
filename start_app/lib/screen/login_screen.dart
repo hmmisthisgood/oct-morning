@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
+import 'package:start_app/screen/ig_post_screen.dart';
 import 'package:start_app/widget/custom_textfield.dart';
+
+import '../navigation/routes.dart';
 
 class LoginScreen extends StatefulWidget {
   LoginScreen({super.key});
@@ -17,6 +20,32 @@ class _LoginScreenState extends State<LoginScreen> {
   bool _hidePassword = true;
 
   final formKey = GlobalKey<FormState>();
+
+  void submit() {
+    final _email = emailController.text;
+    final _password = passwordController.text;
+
+    print(_email);
+    print(_password);
+
+    /// to hide the keyboard
+    FocusScope.of(context).unfocus();
+    final state = formKey.currentState;
+
+    // Navigator.pushNamed(context, '/homepage');
+    // Navigator.push(context, MaterialPageRoute(builder: (_) => IgHomeScreen()));
+
+    Navigator.pushNamedAndRemoveUntil(
+        context, Routes.homeScreen, (route) => false);
+
+    if (state != null) {
+      // bool isValidated = state.validate();
+
+      //// send data to server
+
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -166,24 +195,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 SizedBox(height: 20),
 
                 MaterialButton(
-                  onPressed: () {
-                    final _email = emailController.text;
-                    final _password = passwordController.text;
-
-                    print(_email);
-                    print(_password);
-
-                    /// to hide the keyboard
-                    FocusScope.of(context).unfocus();
-                    final state = formKey.currentState;
-
-                    if (state != null) {
-                      bool isValidated = state.validate();
-
-                      //// send data to server
-
-                    }
-                  },
+                  onPressed: submit,
                   minWidth: double.infinity,
                   color: Colors.purple,
                   child: Text(

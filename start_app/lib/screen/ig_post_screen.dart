@@ -1,30 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:start_app/widget/ig_post.dart';
-import '../widget/instaggram_post.dart';
 
 class IgHomeScreen extends StatelessWidget {
   const IgHomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        // appBar: AppBar(),
-        body: SingleChildScrollView(
-      physics: BouncingScrollPhysics(),
-      child: Column(
-        children: [
-          IgPost(),
-          IgPost(),
-          IgPost(),
-        ],
-      ),
-    ));
+    return WillPopScope(
+      onWillPop: () async {
+        return true;
+      },
+      child: Scaffold(
+          appBar: AppBar(),
+          body: SingleChildScrollView(
+            physics: BouncingScrollPhysics(),
+            child: Column(
+              children: [
+                IgPost(),
+                IgPost(),
+                IgPost(),
+              ],
+            ),
+          )),
+    );
   }
 }
 
 
 
 
+/// WillPopScope: to detect back button press
 
 
 
