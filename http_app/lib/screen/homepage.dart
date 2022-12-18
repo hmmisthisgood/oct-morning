@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:http_app/screen/images_screen.dart';
 
 import '../model/post.dart';
 
@@ -103,6 +104,25 @@ class _HomepageState extends State<Homepage> {
     } catch (e) {}
   }
 
+  onPressed() {
+    /// Navigator
+    ///  is stack based
+
+    /// Routes:
+    ///     |--> MaterialPageRoute
+    ///     |--> CupertinoPageRoute
+
+    // final route = MaterialPageRoute(builder: (cxt) =>Scaffold(appBar: AppBar(),));
+    final route = MaterialPageRoute(builder: (cxt) => ImagesScreen());
+
+    Navigator.pushNamed(context, "/images");
+
+    // Navigator.push(context, route);
+
+    // Navigator.push(
+    //     context, MaterialPageRoute(builder: (cxt) => ImagesScreen()));
+  }
+
 //  condition? ---- : -----;
 
   Widget buildBody() {
@@ -120,19 +140,25 @@ class _HomepageState extends State<Homepage> {
         // final post = postsList[index];
         final Post post = postData[index];
 
-        return Container(
-          padding: const EdgeInsets.all(8.0),
-          margin: const EdgeInsets.all(8.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "${index + 1}. ${post.title}",
-                style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
-              ),
-              SizedBox(height: 12),
-              Text(post.body),
-            ],
+        return InkWell(
+          onTap: onPressed,
+          child: Container(
+            padding: const EdgeInsets.all(8.0),
+            margin: const EdgeInsets.all(8.0),
+            decoration: BoxDecoration(
+                border: Border.all(color: Colors.grey),
+                borderRadius: BorderRadius.circular(10)),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "${index + 1}. ${post.title}",
+                  style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
+                ),
+                SizedBox(height: 12),
+                Text(post.body),
+              ],
+            ),
           ),
         );
       },

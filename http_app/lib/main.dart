@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http_app/screen/homepage.dart';
 
+import 'navigation/route_generator.dart';
 import 'screen/images_screen.dart';
 
 main() {
@@ -15,7 +16,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       title: "Api App",
-      home: ImagesScreen(),
+      initialRoute: "/",
+      onGenerateRoute: customRouteGenerator,
+      // home: Homepage(),
     );
   }
 }

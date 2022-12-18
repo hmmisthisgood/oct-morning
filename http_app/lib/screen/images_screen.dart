@@ -58,6 +58,14 @@ class _ImagesScreenState extends State<ImagesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        leading: InkWell(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Icon(Icons.arrow_back_ios),
+        ),
+      ),
       body: ListView.builder(
         itemCount: pixabayImages.length,
         itemBuilder: (context, index) {
