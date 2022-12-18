@@ -19,7 +19,7 @@ dependencies:
   
 
   # data persistence
-
+  shared_preferences: ^2.0.15
 
 
 

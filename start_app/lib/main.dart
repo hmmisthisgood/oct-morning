@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: "My App",
       theme: ThemeData(primarySwatch: Colors.purple, textTheme: TextTheme()),
-      initialRoute: Routes.loginScreen,
+      initialRoute: Routes.spalshScreen,
       onGenerateRoute: customRouteGenerator,
     );
   }

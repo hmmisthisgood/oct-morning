@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:start_app/screen/ig_post_screen.dart';
 import 'package:start_app/widget/custom_textfield.dart';
 
@@ -21,7 +22,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   final formKey = GlobalKey<FormState>();
 
-  void submit() {
+  void submit() async {
     final _email = emailController.text;
     final _password = passwordController.text;
 
@@ -37,6 +38,14 @@ class _LoginScreenState extends State<LoginScreen> {
 
     Navigator.pushNamedAndRemoveUntil(
         context, Routes.homeScreen, (route) => false);
+
+    /// save login status
+
+    final instance = await SharedPreferences.getInstance();
+
+    instance.setBool("isUserLoggedIn", true);
+
+    instance.getBool("isUserLoggedIn");
 
     if (state != null) {
       // bool isValidated = state.validate();
