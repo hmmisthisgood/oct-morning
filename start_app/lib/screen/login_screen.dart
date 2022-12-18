@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:start_app/screen/ig_post_screen.dart';
+import 'package:start_app/util/shared_pref.dart';
 import 'package:start_app/widget/custom_textfield.dart';
 
 import '../navigation/routes.dart';
@@ -41,11 +42,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
     /// save login status
 
-    final instance = await SharedPreferences.getInstance();
-
-    instance.setBool("isUserLoggedIn", true);
-
-    instance.getBool("isUserLoggedIn");
+    SharedPref.setUserLoggedIn(true);
 
     if (state != null) {
       // bool isValidated = state.validate();
