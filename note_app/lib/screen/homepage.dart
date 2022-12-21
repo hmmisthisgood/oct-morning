@@ -106,6 +106,10 @@ class _HomepageState extends State<Homepage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Icon(Icons.add),
+      ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -133,16 +137,6 @@ class _HomepageState extends State<Homepage> {
                       color: Colors.green,
                     ),
                   ),
-                  Expanded(
-                    child: MaterialButton(
-                      onPressed: getNotes,
-                      child: Text(
-                        "Get Notes",
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      color: Colors.blue,
-                    ),
-                  )
                 ],
               ),
               Expanded(
