@@ -2,14 +2,15 @@ import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
-class DBService {
-  final noteTableName = "notes";
-  late Database database;
+import '../model/note.dart';
 
-  initDatabase() async {
+class DBService {
+  static final noteTableName = "notes";
+  static late Database database;
+
+  static Future initDatabase() async {
     final dir = await getApplicationDocumentsDirectory();
     final dbPath = join(dir.path, "our-database.db");
-    print(dbPath);
 
     /// /data/user/0/com.example.note_app/app_flutter/our-database.db
 
@@ -42,33 +43,41 @@ class DBService {
     );
   }
 
-  createNote({String title = "buy something", String body = ""}) async {
+  static createNote({String title = "buy something", String body = ""}) async {
     await database.insert(
       noteTableName,
       {
         "title": title,
         "body": body,
-        "createdAt": DateTime.now().toIso8601String(),
+        "createdAt": DateTime.now().toString(),
         "isCompleted": 'false'
       },
     );
   }
 
-  Future<List<Map<String, dynamic>>> getNotes() async {
-    return await database.query(
+  static Future<List<Note>> getNotes() async {
+    final result = await database.query(
       noteTableName,
       // orderBy: "dateCreated DSC",
     );
+
+    final notes = Note.fromList(result);
+    return notes;
   }
 
-  deleteNote(int id) async {
+  static deleteNote(int id) async {
     await database.delete(noteTableName, where: "id=?", whereArgs: [id]);
   }
 
-  updateNote({String? title, String? body}) async {
+  static updateNote({String? title, String? body, required int id}) async {
     await database.update(
-      noteTableName,
-      {"title": title, "body": body},
-    );
+        noteTableName,
+        {
+          "title": title,
+          "body": body,
+          "updatedAt": DateTime.now().toString(),
+        },
+        where: "id=?",
+        whereArgs: [id]);
   }
 }
