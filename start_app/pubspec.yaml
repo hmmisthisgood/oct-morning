@@ -12,6 +12,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_svg: ^1.1.6
   animated_bottom_navigation_bar: ^1.1.0
+  fluttertoast: ^8.1.2 
 
 
   # utils
@@ -25,7 +26,12 @@ dependencies:
 
 
   # firebase pacakages
-
+  firebase_core: ^2.4.0
+  firebase_auth: ^4.2.2
+  google_sign_in: ^5.4.2
+  # firebase_crashlytics: ^3.0.8
+  # firebase_messaging: ^14.2.0
+  flutter_facebook_auth: ^5.0.6
 
 
   # network and http

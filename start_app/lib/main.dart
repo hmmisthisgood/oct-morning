@@ -1,10 +1,15 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:start_app/navigation/route_generator.dart';
 import 'package:start_app/screen/stack_screen.dart';
 
 import 'navigation/routes.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp();
+
   runApp(MyApp());
 }
 

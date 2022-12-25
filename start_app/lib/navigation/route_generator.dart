@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:start_app/navigation/routes.dart';
+import 'package:start_app/screen/auth/signup_screen.dart';
 import 'package:start_app/screen/ig_post_screen.dart';
-import 'package:start_app/screen/login_screen.dart';
+import 'package:start_app/screen/auth/login_screen.dart';
 import 'package:start_app/screen/splash_screen.dart';
-
-import '../screen/home_screen.dart';
 
 Route customRouteGenerator(RouteSettings settings) {
   final routeName = settings.name;
@@ -18,6 +17,9 @@ Route customRouteGenerator(RouteSettings settings) {
       return MaterialPageRoute(builder: (ctx) => IgHomeScreen());
     case Routes.homeScreen:
       return MaterialPageRoute(builder: (ctx) => IgHomeScreen());
+    case Routes.signupScreen:
+      return MaterialPageRoute(builder: (ctx) => SignupScreen());
+
     default:
       return MaterialPageRoute(builder: (ctx) => LoginScreen());
   }

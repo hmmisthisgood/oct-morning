@@ -17,4 +17,9 @@ class SharedPref {
 
     return instance.getBool(_IS_USER_LOGGED_IN) ?? false;
   }
+
+  static Future<void> clearAll() async {
+    final instance = await SharedPreferences.getInstance();
+    await instance.clear();
+  }
 }

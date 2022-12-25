@@ -20,8 +20,9 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   void checkLoggedInStatusAndNavigate() async {
-    final isLoggedIn = SharedPref.getUserLoggedIn();
+    await SharedPref.clearAll();
 
+    final isLoggedIn = await SharedPref.getUserLoggedIn();
     await Future.delayed(Duration(milliseconds: 1000), () {
       if (isLoggedIn == false) {
         Navigator.pushNamed(context, Routes.loginScreen);
