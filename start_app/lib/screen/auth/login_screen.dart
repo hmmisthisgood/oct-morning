@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:form_field_validator/form_field_validator.dart';
@@ -83,6 +86,30 @@ class _LoginScreenState extends State<LoginScreen> {
 
     // Once signed in, return the UserCredential
     return await FirebaseAuth.instance.signInWithCredential(credential);
+  }
+
+  signInWithFacebook() async {
+    final result = await FacebookAuth.instance.login();
+
+    final status = result.status;
+
+    if (status == LoginStatus.failed) {
+      Fluttertoast.showToast(msg: "Login failed");
+      return;
+    }
+
+    if (status == LoginStatus.cancelled) {
+      Fluttertoast.showToast(msg: "Login canclled by user");
+      return;
+    }
+    if (status == LoginStatus.success) {
+      final token = result.accessToken!.token;
+
+      final credential = FacebookAuthProvider.credential(token);
+
+      final firebaseUserCreds =
+          await FirebaseAuth.instance.signInWithCredential(credential);
+    }
   }
 
   @override
@@ -278,7 +305,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
 
                 MaterialButton(
-                  onPressed: () {},
+                  onPressed: signInWithFacebook,
                   // color: Colors.red,
                   shape: RoundedRectangleBorder(
                       side: BorderSide(color: Colors.blue)),

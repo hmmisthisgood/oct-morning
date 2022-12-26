@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <string name="facebook_app_id">727478955118186</string>
+    <string name="facebook_client_token">f8dcdbc7e27f2f0682b5a1fa43be9701</string>
+    <string name="app_name">Decemner App</string>
+</resources>
