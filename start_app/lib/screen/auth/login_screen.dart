@@ -30,6 +30,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final formKey = GlobalKey<FormState>();
 
   bool isConditionAccepted = false;
+
   void submit() async {
     final _email = emailController.text;
     final _password = passwordController.text;
@@ -328,14 +329,14 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
 
                 // IconButton(
-                //   onPressed: () {
-                //     isConditionAccepted = !isConditionAccepted;
-                //     setState(() {});
-                //   },
-                //   icon: Icon(isConditionAccepted
-                //       ? Icons.check_box
-                //       : Icons.check_box_outline_blank),
-                // )
+                //     onPressed: () {
+                //       isConditionAccepted = !isConditionAccepted;
+                //       setState(() {});
+                //     },
+                //     icon: isConditionAccepted == false
+                //         ? Icon(Icons.check_box_outline_blank,
+                //             color: Colors.grey)
+                //         : Icon(Icons.check_box, color: Colors.orange))
               ],
             ),
           ),
