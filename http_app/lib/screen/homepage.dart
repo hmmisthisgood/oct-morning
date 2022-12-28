@@ -43,7 +43,7 @@ class _HomepageState extends State<Homepage> {
   // get(){}
 
   fetchDataFromServer() async {
-    final url = "https://jsonplaceholder.typicode.com/posts";
+    final url = "https://json.typicode.com/posts";
     // final url = "2.0";
 
     final uri = Uri.parse(url);
