@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:http_app/screen/homepage.dart';
 
 import 'navigation/route_generator.dart';
-import 'screen/images_screen.dart';
+import 'screen/images_screen_with_bloc.dart';
 
 main() {
   runApp(const MyApp());
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       title: "Api App",
-      initialRoute: "hompage_bloc",
+      initialRoute: "images_bloc",
       onGenerateRoute: customRouteGenerator,
       // home: Homepage(),
     );

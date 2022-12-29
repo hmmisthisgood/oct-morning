@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:http_app/screen/images_screen.dart';
+import 'package:http_app/screen/images_screen_with_bloc.dart';
 
 import '../model/post.dart';
 
@@ -113,7 +113,7 @@ class _HomepageState extends State<Homepage> {
     ///     |--> CupertinoPageRoute
 
     // final route = MaterialPageRoute(builder: (cxt) =>Scaffold(appBar: AppBar(),));
-    final route = MaterialPageRoute(builder: (cxt) => ImagesScreen());
+    // final route = MaterialPageRoute(builder: (cxt) => ImagesScreen());
 
     Navigator.pushNamed(context, "/images");
 
