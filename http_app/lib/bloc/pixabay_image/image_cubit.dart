@@ -34,7 +34,7 @@ class ImageCubit extends Cubit<ImageState> {
       final imagesList =
           hits.map((item) => PixabayImage.fromJson(item)).toList();
       allImages = imagesList;
-
+      print("success");
       emit(ImageFetchSuccess(data: imagesList));
     } catch (e, s) {
       print(e);

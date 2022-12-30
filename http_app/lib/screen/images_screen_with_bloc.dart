@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http_app/bloc/pixabay_image/image_cubit.dart';
 import 'package:http_app/bloc/pixabay_image/image_start.dart';
-import 'package:http_app/widget/instagram_post.dart';
+import 'package:http_app/widget/images_list.dart';
 
 class ImageScreenWithBloc extends StatefulWidget {
   const ImageScreenWithBloc({super.key});
@@ -13,46 +13,27 @@ class ImageScreenWithBloc extends StatefulWidget {
 }
 
 class _ImageScreenWithBlocState extends State<ImageScreenWithBloc> {
-  final ImageCubit imageCubit = ImageCubit();
+  // final ImageCubit imageCubit = ImageCubit();
+
+  // final ImageCubit imageCubit1 = ImageCubit();
+  // final ImageCubit imageCubit2 = ImageCubit();
 
   final listController = ScrollController();
-
   @override
   void initState() {
     super.initState();
-    imageCubit.fetchImages();
 
-    listController.addListener(listener);
-  }
+    BlocProvider.of<ImageCubit>(context).fetchImages();
 
-  void listener() {
-    final ScrollPosition position = listController.position;
-    final double pixels = position.pixels;
-
-    final double max = position.maxScrollExtent;
-    final double min = position.minScrollExtent; //0
-    final bool atEdge = position.atEdge;
-
-    // print("Min:$min");
-
-    print("current position: $pixels");
-    // print("Max: $max");
-
-    /// start
-    if (pixels <= min && atEdge) {
-      print("I am at start of scroll");
-    }
-
-    // dectect scroll end
-    if (pixels >= max && atEdge) {
-      print("at scroll end");
-
-      imageCubit.loadMoreImages();
-    }
+    //same line ass above
+    // context.read<ImageCubit>().fetchImages();
   }
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+    final theme = Theme.of(context);
+
     return Scaffold(
       appBar: AppBar(
         leading: InkWell(
@@ -62,8 +43,7 @@ class _ImageScreenWithBlocState extends State<ImageScreenWithBloc> {
           child: Icon(Icons.arrow_back_ios),
         ),
       ),
-      body: BlocConsumer(
-        bloc: imageCubit,
+      body: BlocConsumer<ImageCubit, ImageState>(
         listener: (context, state) {
           if (state is ImageFetchMoreError) {
             Fluttertoast.showToast(msg: "An error while laoding more images");
@@ -102,16 +82,11 @@ class _ImageScreenWithBlocState extends State<ImageScreenWithBloc> {
                         child: Text("SCroll to Bottom")),
                   ],
                 ),
-                Expanded(
-                  child: ListView.builder(
-                      controller: listController,
-                      itemCount: state.data?.length,
-                      // physics: BouncingScrollPhysics(),
-                      itemBuilder: (context, index) {
-                        final oneImage = state.data![index];
-                        return InstagramPost(post: oneImage);
-                      }),
-                ),
+
+                ///
+                Expanded(child: ImagesListView(data: state.data!)),
+                //
+
                 if (state is ImageFetchingMoreData) CircularProgressIndicator(),
                 if (state is ImageFetchMoreError)
                   Padding(
@@ -128,3 +103,5 @@ class _ImageScreenWithBlocState extends State<ImageScreenWithBloc> {
     );
   }
 }
+
+/// BlocProvider

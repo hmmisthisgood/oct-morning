@@ -1,9 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:http_app/screen/homepage.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:http_app/bloc/pixabay_image/image_cubit.dart';
+import 'package:http_app/bloc/posts/posts_bloc.dart';
 
 import 'navigation/route_generator.dart';
-import 'screen/images_screen_with_bloc.dart';
 
 main() {
   runApp(const MyApp());
@@ -14,11 +14,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: "Api App",
-      initialRoute: "images_bloc",
-      onGenerateRoute: customRouteGenerator,
-      // home: Homepage(),
-    );
+    return MultiBlocProvider(
+        providers: [
+          BlocProvider<ImageCubit>(create: (ctx) => ImageCubit()),
+          BlocProvider<PostBloc>(create: (ctx) => PostBloc()),
+        ],
+        child: const MaterialApp(
+          title: "Api App",
+          initialRoute: "images_bloc",
+          onGenerateRoute: customRouteGenerator,
+          // home: Homepage(),
+        ));
   }
 }
