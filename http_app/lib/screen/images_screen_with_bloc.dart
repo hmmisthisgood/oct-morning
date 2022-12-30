@@ -4,7 +4,6 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http_app/bloc/pixabay_image/image_cubit.dart';
 import 'package:http_app/bloc/pixabay_image/image_start.dart';
 import 'package:http_app/widget/instagram_post.dart';
-import 'package:lazy_load_scrollview/lazy_load_scrollview.dart';
 
 class ImageScreenWithBloc extends StatefulWidget {
   const ImageScreenWithBloc({super.key});
@@ -22,6 +21,34 @@ class _ImageScreenWithBlocState extends State<ImageScreenWithBloc> {
   void initState() {
     super.initState();
     imageCubit.fetchImages();
+
+    listController.addListener(listener);
+  }
+
+  void listener() {
+    final ScrollPosition position = listController.position;
+    final double pixels = position.pixels;
+
+    final double max = position.maxScrollExtent;
+    final double min = position.minScrollExtent; //0
+    final bool atEdge = position.atEdge;
+
+    // print("Min:$min");
+
+    print("current position: $pixels");
+    // print("Max: $max");
+
+    /// start
+    if (pixels <= min && atEdge) {
+      print("I am at start of scroll");
+    }
+
+    // dectect scroll end
+    if (pixels >= max && atEdge) {
+      print("at scroll end");
+
+      imageCubit.loadMoreImages();
+    }
   }
 
   @override
@@ -58,19 +85,32 @@ class _ImageScreenWithBlocState extends State<ImageScreenWithBloc> {
               state is ImageFetchMoreError) {
             return Column(
               children: [
+                Row(
+                  children: [
+                    TextButton(
+                        onPressed: () {
+                          // listController.jumpTo(0);
+                          listController.animateTo(0,
+                              duration: Duration(milliseconds: 1000),
+                              curve: Curves.easeIn);
+                        },
+                        child: Text("SCroll to top")),
+                    TextButton(
+                        onPressed: () {
+                          listController.jumpTo(1000);
+                        },
+                        child: Text("SCroll to Bottom")),
+                  ],
+                ),
                 Expanded(
-                  child: LazyLoadScrollView(
-                    onEndOfPage: () {
-                      imageCubit.loadMoreImages();
-                    },
-                    child: ListView.builder(
-                        controller: listController,
-                        itemCount: state.data?.length,
-                        itemBuilder: (context, index) {
-                          final oneImage = state.data![index];
-                          return InstagramPost(post: oneImage);
-                        }),
-                  ),
+                  child: ListView.builder(
+                      controller: listController,
+                      itemCount: state.data?.length,
+                      // physics: BouncingScrollPhysics(),
+                      itemBuilder: (context, index) {
+                        final oneImage = state.data![index];
+                        return InstagramPost(post: oneImage);
+                      }),
                 ),
                 if (state is ImageFetchingMoreData) CircularProgressIndicator(),
                 if (state is ImageFetchMoreError)
