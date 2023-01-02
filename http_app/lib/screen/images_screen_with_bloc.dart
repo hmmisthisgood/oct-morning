@@ -3,11 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http_app/bloc/pixabay_image/image_cubit.dart';
 import 'package:http_app/bloc/pixabay_image/image_start.dart';
+import 'package:http_app/utils/env.dart';
+import 'package:http_app/widget/hastag_widget.dart';
 import 'package:http_app/widget/images_list.dart';
 
 class ImageScreenWithBloc extends StatefulWidget {
-  const ImageScreenWithBloc({super.key});
-
+  const ImageScreenWithBloc({super.key, this.hashtag});
+  final String? hashtag;
   @override
   State<ImageScreenWithBloc> createState() => _ImageScreenWithBlocState();
 }
@@ -31,8 +33,8 @@ class _ImageScreenWithBlocState extends State<ImageScreenWithBloc> {
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
     final theme = Theme.of(context);
+    final textTheme = theme.textTheme;
 
     return Scaffold(
       appBar: AppBar(
@@ -68,13 +70,14 @@ class _ImageScreenWithBlocState extends State<ImageScreenWithBloc> {
                 Row(
                   children: [
                     TextButton(
-                        onPressed: () {
-                          // listController.jumpTo(0);
-                          listController.animateTo(0,
-                              duration: Duration(milliseconds: 1000),
-                              curve: Curves.easeIn);
-                        },
-                        child: Text("SCroll to top")),
+                      onPressed: () {
+                        // listController.jumpTo(0);
+                        listController.animateTo(0,
+                            duration: Duration(milliseconds: 1000),
+                            curve: Curves.easeIn);
+                      },
+                      child: Text("SCroll to top", style: textTheme.headline6!),
+                    ),
                     TextButton(
                         onPressed: () {
                           listController.jumpTo(1000);
@@ -84,7 +87,11 @@ class _ImageScreenWithBlocState extends State<ImageScreenWithBloc> {
                 ),
 
                 ///
-                Expanded(child: ImagesListView(data: state.data!)),
+                Expanded(
+                    child: ImagesListView(
+                  data: state.data!,
+                  hashtag: widget.hashtag,
+                )),
                 //
 
                 if (state is ImageFetchingMoreData) CircularProgressIndicator(),

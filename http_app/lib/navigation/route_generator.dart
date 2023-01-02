@@ -17,7 +17,10 @@ Route customRouteGenerator(RouteSettings settings) {
     case "/images":
       return MaterialPageRoute(builder: (ctx) => ImagesScreen());
     case "images_bloc":
-      return MaterialPageRoute(builder: (ctx) => ImageScreenWithBloc());
+      return MaterialPageRoute(
+          builder: (ctx) => ImageScreenWithBloc(
+                hashtag: "#newyear",
+              ));
     case "/futureScreen":
       return MaterialPageRoute(builder: (ctx) => FutureBScreen());
     case "valueListen":

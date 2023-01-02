@@ -57,6 +57,10 @@ class _ImagesScreenState extends State<ImagesScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+
+    final h6 = textTheme.headline6;
+
     return Scaffold(
       appBar: AppBar(
         leading: InkWell(

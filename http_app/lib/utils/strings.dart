@@ -4,3 +4,6 @@ final treeImage =
     "https://cdn.pixabay.com/photo/2022/12/12/17/58/fir-branch-7651588_1280.jpg";
 const apiKey = "24747090-95c20607d87e00f7bea20cb40";
 const pixabayUrl = "https://pixabay.com/api/";
+// "https://dev.pixabay.com/api/";
+
+const devUrl = "https://dev.pixabay.com/api/";

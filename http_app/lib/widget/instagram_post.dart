@@ -4,14 +4,18 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:http_app/model/pixabay_image.dart';
+import 'package:http_app/widget/hastag_widget.dart';
 
 class InstagramPost extends StatelessWidget {
   final PixabayImage post;
-
-  InstagramPost({required this.post});
+  final String? hashtag;
+  InstagramPost({required this.post, this.hashtag});
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final newHashtag = HashtagWidget.of(context).hashtag;
+
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -102,10 +106,8 @@ class InstagramPost extends StatelessWidget {
           children: [
             /// caption
             Text("${post.tags}"),
-            Text(
-              "#cars",
-              style: TextStyle(color: Colors.blue),
-            )
+            Text(hashtag!, style: TextStyle(color: Colors.blue)),
+            Text(newHashtag, style: TextStyle(color: Colors.blue))
           ],
         ),
       ]),

@@ -2,7 +2,8 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:http_app/screen/images_screen_with_bloc.dart';
+import 'package:http_app/widget/hastag_widget.dart';
+import 'package:http_app/widget/instagram_post.dart';
 
 import '../model/post.dart';
 
@@ -167,7 +168,13 @@ class _HomepageState extends State<Homepage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(), body: buildBody());
+    final hashtagWidget = HashtagWidget.of(context);
+    print(hashtagWidget.hashtag);
+
+    return Scaffold(
+      appBar: AppBar(),
+      body: buildBody(),
+    );
   }
 }
 

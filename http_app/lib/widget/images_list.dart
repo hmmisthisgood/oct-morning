@@ -5,8 +5,9 @@ import 'package:http_app/model/pixabay_image.dart';
 import 'package:http_app/widget/instagram_post.dart';
 
 class ImagesListView extends StatefulWidget {
-  const ImagesListView({super.key, required this.data});
+  const ImagesListView({super.key, required this.data, this.hashtag});
   final List<PixabayImage> data;
+  final String? hashtag;
   @override
   State<ImagesListView> createState() => _ImagesListViewState();
 }
@@ -53,7 +54,10 @@ class _ImagesListViewState extends State<ImagesListView> {
       itemCount: widget.data.length,
       itemBuilder: (context, index) {
         final oneImage = widget.data[index];
-        return InstagramPost(post: oneImage);
+        return InstagramPost(
+          post: oneImage,
+          hashtag: widget.hashtag,
+        );
       },
     );
   }
