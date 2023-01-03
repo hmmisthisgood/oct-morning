@@ -107,7 +107,12 @@ class InstagramPost extends StatelessWidget {
             /// caption
             Text("${post.tags}"),
             Text(hashtag!, style: TextStyle(color: Colors.blue)),
-            Text(newHashtag, style: TextStyle(color: Colors.blue))
+            Expanded(
+              child: Text(
+                newHashtag,
+                style: TextStyle(color: Colors.blue),
+              ),
+            )
           ],
         ),
       ]),

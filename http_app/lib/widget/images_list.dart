@@ -3,11 +3,17 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http_app/bloc/pixabay_image/image_cubit.dart';
 import 'package:http_app/model/pixabay_image.dart';
 import 'package:http_app/widget/instagram_post.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class ImagesListView extends StatefulWidget {
-  const ImagesListView({super.key, required this.data, this.hashtag});
+  const ImagesListView(
+      {super.key,
+      required this.data,
+      this.hashtag,
+      required this.refreshController});
   final List<PixabayImage> data;
   final String? hashtag;
+  final RefreshController refreshController;
   @override
   State<ImagesListView> createState() => _ImagesListViewState();
 }
@@ -31,17 +37,17 @@ class _ImagesListViewState extends State<ImagesListView> {
     final bool atEdge = position.atEdge;
 
     // print("Min:$min");
-    print("current position: $pixels");
+    // print("current position: $pixels");
     // print("Max: $max");
 
     /// start
     if (pixels <= min && atEdge) {
-      print("I am at start of scroll");
+      // print("I am at start of scroll");
     }
 
     // dectect scroll end
     if (pixels >= max && atEdge) {
-      print("at scroll end");
+      // print("at scroll end");
 
       BlocProvider.of<ImageCubit>(context).loadMoreImages();
     }
@@ -49,16 +55,22 @@ class _ImagesListViewState extends State<ImagesListView> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      controller: listController,
-      itemCount: widget.data.length,
-      itemBuilder: (context, index) {
-        final oneImage = widget.data[index];
-        return InstagramPost(
-          post: oneImage,
-          hashtag: widget.hashtag,
-        );
+    return SmartRefresher(
+      controller: widget.refreshController,
+      onRefresh: () {
+        BlocProvider.of<ImageCubit>(context).refreshImages();
       },
+      child: ListView.builder(
+        controller: listController,
+        itemCount: widget.data.length,
+        itemBuilder: (context, index) {
+          final PixabayImage oneImage = widget.data[index];
+          return InstagramPost(
+            post: oneImage,
+            hashtag: widget.hashtag,
+          );
+        },
+      ),
     );
   }
 }

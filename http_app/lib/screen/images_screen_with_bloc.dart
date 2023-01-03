@@ -3,9 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http_app/bloc/pixabay_image/image_cubit.dart';
 import 'package:http_app/bloc/pixabay_image/image_start.dart';
-import 'package:http_app/utils/env.dart';
-import 'package:http_app/widget/hastag_widget.dart';
 import 'package:http_app/widget/images_list.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class ImageScreenWithBloc extends StatefulWidget {
   const ImageScreenWithBloc({super.key, this.hashtag});
@@ -21,6 +20,8 @@ class _ImageScreenWithBlocState extends State<ImageScreenWithBloc> {
   // final ImageCubit imageCubit2 = ImageCubit();
 
   final listController = ScrollController();
+  final refreshController = RefreshController();
+
   @override
   void initState() {
     super.initState();
@@ -50,12 +51,28 @@ class _ImageScreenWithBlocState extends State<ImageScreenWithBloc> {
           if (state is ImageFetchMoreError) {
             Fluttertoast.showToast(msg: "An error while laoding more images");
           }
+
+          if (state is ImageRefreshError || state is ImageFetchSuccess) {
+            refreshController.refreshCompleted();
+          }
         },
         builder: (context, ImageState state) {
           print(state);
 
           if (state is ImageLoading) {
-            return Center(child: CircularProgressIndicator());
+            print(state.loadingMessage);
+            return Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                CircularProgressIndicator(),
+                SizedBox(height: 10),
+                Container(width: double.infinity),
+                Text(
+                  state.loadingMessage,
+                  style: TextStyle(fontSize: 16),
+                )
+              ],
+            );
           }
 
           if (state is ImageError) {
@@ -64,7 +81,9 @@ class _ImageScreenWithBlocState extends State<ImageScreenWithBloc> {
 
           if (state is ImageFetchSuccess ||
               state is ImageFetchingMoreData ||
-              state is ImageFetchMoreError) {
+              state is ImageFetchMoreError ||
+              state is ImageRefreshError ||
+              state is ImageRefreshing) {
             return Column(
               children: [
                 Row(
@@ -89,9 +108,9 @@ class _ImageScreenWithBlocState extends State<ImageScreenWithBloc> {
                 ///
                 Expanded(
                     child: ImagesListView(
-                  data: state.data!,
-                  hashtag: widget.hashtag,
-                )),
+                        data: state.data!,
+                        hashtag: widget.hashtag,
+                        refreshController: refreshController)),
                 //
 
                 if (state is ImageFetchingMoreData) CircularProgressIndicator(),

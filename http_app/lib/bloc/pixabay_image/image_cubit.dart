@@ -15,7 +15,14 @@ class ImageCubit extends Cubit<ImageState> {
     final dio = Dio(BaseOptions());
 
     try {
-      emit(ImageLoading());
+      emit(ImageLoading(loadingMessage: "Fetching details...."));
+
+      await Future.delayed(
+        Duration(milliseconds: 1500),
+        () {},
+      );
+
+      emit(ImageLoading(loadingMessage: "Synchronizing...."));
 
       final response = await dio.get(
         pixabayUrl,
@@ -75,6 +82,38 @@ class ImageCubit extends Cubit<ImageState> {
       print(e);
       print(s);
       emit(ImageFetchMoreError(data: allImages, errorMessage: e.toString()));
+    }
+  }
+
+  refreshImages() async {
+    final dio = Dio(BaseOptions());
+
+    try {
+      emit(ImageRefreshing(data: allImages));
+
+      final response = await dio.get(
+        pixabayUrl,
+        queryParameters: {
+          "key": apiKey,
+          "page": 1,
+          "per_page": 5,
+          "q": "cars",
+        },
+      );
+
+      final Map body = response.data;
+      // json.decode() not needed
+
+      final List hits = body['hits'];
+      final imagesList =
+          hits.map((item) => PixabayImage.fromJson(item)).toList();
+      allImages = imagesList;
+      print("success");
+      emit(ImageFetchSuccess(data: imagesList));
+    } catch (e, s) {
+      print(e);
+      print(s);
+      emit(ImageRefreshError(data: allImages));
     }
   }
 }
