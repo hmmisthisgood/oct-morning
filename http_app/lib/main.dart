@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:http_app/bloc/pixabay_image/image_cubit.dart';
 import 'package:http_app/bloc/posts/posts_bloc.dart';
 import 'package:http_app/utils/env.dart';
@@ -29,8 +30,10 @@ class MyApp extends StatelessWidget {
           initialRoute: "images_bloc",
           onGenerateRoute: customRouteGenerator,
           theme: ThemeData(
+            fontFamily: "Montserrat",
             textTheme: TextTheme(
-              headline6: TextStyle(fontSize: 18, color: Color(0xff1f1f1f)),
+              headline6:
+                  GoogleFonts.sevillana(fontSize: 18, color: Color(0xff1f1f1f)),
             ),
           ),
           // home: Homepage(),

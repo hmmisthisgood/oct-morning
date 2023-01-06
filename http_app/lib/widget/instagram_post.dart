@@ -3,7 +3,9 @@ import 'dart:math';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:http_app/model/pixabay_image.dart';
+import 'package:http_app/utils/our_icons.dart';
 import 'package:http_app/widget/hastag_widget.dart';
 
 class InstagramPost extends StatelessWidget {
@@ -35,9 +37,15 @@ class InstagramPost extends StatelessWidget {
                   ),
                 ),
                 SizedBox(width: 10),
-                Text(post.user),
+                Text(
+                  post.user,
+                  style: GoogleFonts.sevillana(fontSize: 20),
+                ),
               ],
             ),
+            Icon(OurIcons.instagram_square),
+            Icon(OurIcons.instagram_1),
+            Icon(OurIcons.instagram_2),
             Icon(Icons.more_horiz)
           ],
         ),
@@ -99,18 +107,31 @@ class InstagramPost extends StatelessWidget {
         SizedBox(height: 10),
 
         /// Like count
-        Text("${post.likes} likes"),
+        Text(
+          "${post.likes} likes",
+          // style: GoogleFonts.sevillana(fontWeight: FontWeight.w100),
+        ),
         SizedBox(height: 6),
 
         Row(
           children: [
             /// caption
-            Text("${post.tags}"),
-            Text(hashtag!, style: TextStyle(color: Colors.blue)),
+            Text(
+              "${post.tags}",
+              style: GoogleFonts.sevillana(),
+            ),
+            Text(
+              hashtag!,
+              style: GoogleFonts.sevillana(color: Colors.blue),
+
+              // TextStyle(color: Colors.blue),
+            ),
             Expanded(
               child: Text(
                 newHashtag,
-                style: TextStyle(color: Colors.blue),
+                style: GoogleFonts.sevillana(color: Colors.blue),
+
+                // style: TextStyle(color: Colors.blue),
               ),
             )
           ],

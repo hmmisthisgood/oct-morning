@@ -35,7 +35,6 @@ class ImageCubit extends Cubit<ImageState> {
       );
 
       final Map body = response.data;
-      // json.decode() not needed
 
       final List hits = body['hits'];
       final imagesList =
