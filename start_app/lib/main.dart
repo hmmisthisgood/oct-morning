@@ -5,6 +5,7 @@ import 'package:start_app/bloc/auth/auth_cubit.dart';
 import 'package:start_app/navigation/nav.dart';
 import 'package:start_app/navigation/route_generator.dart';
 import 'package:start_app/screen/stack_screen.dart';
+import 'package:start_app/util/theme.dart';
 
 import 'navigation/routes.dart';
 
@@ -24,12 +25,11 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: "My App",
         navigatorKey: Nav.navKey,
-        theme: ThemeData(
-          primarySwatch: Colors.purple,
-          textTheme: TextTheme(
-            headline6: TextStyle(fontSize: 14, color: Colors.black),
-          ),
-        ),
+        theme: CustomTheme.lightTheme,
+        darkTheme: CustomTheme.darkTheme,
+        highContrastDarkTheme: CustomTheme.highContrastDarkTheme,
+        highContrastTheme: CustomTheme.highContrastLightTheme,
+        themeMode: ThemeMode.light,
         initialRoute: Routes.spalshScreen,
         onGenerateRoute: customRouteGenerator,
       ),

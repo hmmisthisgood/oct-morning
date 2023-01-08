@@ -137,12 +137,8 @@ class _LoginScreenState extends State<LoginScreen> {
               // crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(height: 20),
-                Text("Hello",
-                    style:
-                        TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
-                Text("Welcome to the app",
-                    style:
-                        TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+                Text("Hello", style: theme.h1),
+                Text("Welcome to the app", style: theme.h1),
                 SizedBox(height: 40),
                 // Text("Email"),
                 // TextFormField(
@@ -243,7 +239,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 CustomTextField(
                   controller: emailController,
                   validator: EmailValidator(errorText: "Email must be valid"),
-                  prefix: Icon(Icons.email_outlined),
+                  prefix: Icon(
+                    Icons.email_outlined,
+                    color: Colors.white,
+                  ),
                   hintText: "test@test.com",
                 ),
 
@@ -257,7 +256,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     PatternValidator(r'(?=.*?[#?!@$%^&*])',
                         errorText: "Password must contain 1 special character")
                   ]),
-                  prefix: Icon(Icons.lock_outline),
+                  prefix: Icon(
+                    Icons.lock_outline,
+                    color: Colors.white,
+                  ),
                   suffix: InkWell(
                     onTap: () {
                       _hidePassword = !_hidePassword; // false
@@ -265,9 +267,12 @@ class _LoginScreenState extends State<LoginScreen> {
                       setState(() {});
                       print("password is hidden: $_hidePassword");
                     },
-                    child: Icon((_hidePassword == true)
-                        ? Icons.visibility
-                        : Icons.visibility_off_outlined),
+                    child: Icon(
+                      (_hidePassword == true)
+                          ? Icons.visibility
+                          : Icons.visibility_off_outlined,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
                 SizedBox(height: 20),
