@@ -8,6 +8,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:start_app/util/assets.dart';
+import 'package:start_app/util/extensions.dart';
 import 'package:start_app/util/shared_pref.dart';
 import 'package:start_app/widget/custom_textfield.dart';
 
@@ -116,6 +117,14 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
+    final h6 = Theme.of(context)
+        .textTheme
+        .headline6!
+        .copyWith(fontWeight: FontWeight.bold);
+    final h66 = theme.h6;
+
     return Scaffold(
       // backgroundColor: Colors.blue,
       body: SafeArea(
@@ -278,8 +287,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     Navigator.pushNamed(context, Routes.signupScreen);
                   },
                   child: Text(
-                    "Do not have an account yet? Sign Up",
-                    style: TextStyle(fontSize: 16),
+                    "Do not have an account yet? Sign Up".addNewLine(),
+                    // style: TextStyle(fontSize: 16),
+                    style: theme.h6,
                   ),
                 ),
                 SizedBox(height: 15),

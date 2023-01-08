@@ -1,5 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:start_app/bloc/auth/auth_cubit.dart';
+import 'package:start_app/navigation/nav.dart';
 import 'package:start_app/navigation/route_generator.dart';
 import 'package:start_app/screen/stack_screen.dart';
 
@@ -16,11 +19,20 @@ void main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: "My App",
-      theme: ThemeData(primarySwatch: Colors.purple, textTheme: TextTheme()),
-      initialRoute: Routes.spalshScreen,
-      onGenerateRoute: customRouteGenerator,
+    return BlocProvider(
+      create: (_) => AuthCubit(),
+      child: MaterialApp(
+        title: "My App",
+        navigatorKey: Nav.navKey,
+        theme: ThemeData(
+          primarySwatch: Colors.purple,
+          textTheme: TextTheme(
+            headline6: TextStyle(fontSize: 14, color: Colors.black),
+          ),
+        ),
+        initialRoute: Routes.spalshScreen,
+        onGenerateRoute: customRouteGenerator,
+      ),
     );
   }
 }
