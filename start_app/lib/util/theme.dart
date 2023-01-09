@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
 class CustomTheme {
-  static final Color lightThemeTextColor = Color(0xff1f1f1f);
-  static final Color darkThemeTextColor = Colors.white;
+  static const Color lightThemeTextColor = Color(0xff1f1f1f);
+  static const Color darkThemeTextColor = Colors.white;
+  static const Color darkBgColor = Color(0xff243447);
+  static const Color lightBgColor = Color(0xffFFFDD0);
 
   static final lightTheme = ThemeData(
     primarySwatch: Colors.red,

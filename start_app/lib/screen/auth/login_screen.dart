@@ -2,14 +2,17 @@ import 'dart:io';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:start_app/bloc/theme/theme_cubit.dart';
 import 'package:start_app/util/assets.dart';
 import 'package:start_app/util/extensions.dart';
 import 'package:start_app/util/shared_pref.dart';
+import 'package:start_app/util/util_functions.dart';
 import 'package:start_app/widget/custom_textfield.dart';
 
 import '../../navigation/routes.dart';
@@ -124,6 +127,7 @@ class _LoginScreenState extends State<LoginScreen> {
         .headline6!
         .copyWith(fontWeight: FontWeight.bold);
     final h66 = theme.h6;
+    final bool isDarkMode = Functions.isDarkMode(theme);
 
     return Scaffold(
       // backgroundColor: Colors.blue,
@@ -137,7 +141,25 @@ class _LoginScreenState extends State<LoginScreen> {
               // crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(height: 20),
-                Text("Hello", style: theme.h1),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("Hello", style: theme.h1),
+                    IconButton(
+                      onPressed: () {
+                        final bool isDarkMode = Functions.isDarkMode(theme);
+
+                        BlocProvider.of<ThemeCubit>(context)
+                            .toggleTheme(isDarkMode);
+
+                        // context.read<ThemeCubit>().toggleTheme(isDarkMode);
+                      },
+                      icon: Icon(isDarkMode
+                          ? Icons.dark_mode_outlined
+                          : Icons.dark_mode),
+                    )
+                  ],
+                ),
                 Text("Welcome to the app", style: theme.h1),
                 SizedBox(height: 40),
                 // Text("Email"),
