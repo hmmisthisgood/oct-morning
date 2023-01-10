@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 
+import '../util/permissions.dart';
 import '../util/strings.dart';
 
 class InstagramPost extends StatelessWidget {
@@ -19,20 +20,30 @@ class InstagramPost extends StatelessWidget {
           children: [
             Row(
               children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(35),
-                  child: Image.network(
-                    personImage,
-                    height: 60,
-                    width: 60,
-                    fit: BoxFit.cover,
+                GestureDetector(
+                  onTap: () {
+                    handleCameraPermission();
+                  },
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(35),
+                    child: Image.network(
+                      personImage,
+                      height: 60,
+                      width: 60,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
                 SizedBox(width: 10),
                 Text(username),
               ],
             ),
-            Icon(Icons.more_horiz)
+            IconButton(
+              onPressed: () {
+                print("pressed");
+              },
+              icon: Icon(Icons.more_horiz),
+            ),
           ],
         ),
 

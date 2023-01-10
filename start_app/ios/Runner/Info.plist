@@ -11,6 +11,16 @@
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	
+
+	<key>NSCameraUsageDescription</key>
+	<string> This app requires camera permission so that users can take picturs and upload in their profile.</string>
+
+	<key>NSCameralRollUsageDescription</key>
+	<string></string>
+	
+	<key>NSContactsUsageDescription</key>
+	<string> This app requires contacts access, so that users can message their contancts.</string>
+	
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
