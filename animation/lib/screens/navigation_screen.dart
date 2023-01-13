@@ -1,5 +1,6 @@
 import 'package:animation/screens/hero1.dart';
 import 'package:animation/screens/lottie_screen.dart';
+import 'package:animation/screens/transform_anim_screen.dart';
 import 'package:animation/screens/transform_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -13,6 +14,7 @@ class NavScreen extends StatelessWidget {
     {"name": "Lottie anmation", "widget": LottieScreen()},
     {"name": "Transform", "widget": TransformScreen()},
     {"name": "Animated Container", "widget": AnimContainerScreen()},
+    {"name": "Transform animated builder", "widget": TransformAnimScreen()},
   ];
 
   @override
