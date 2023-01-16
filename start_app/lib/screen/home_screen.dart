@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
+  final String? test;
+
+  HomeScreen({this.test});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

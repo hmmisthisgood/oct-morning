@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:start_app/screen/home_screen.dart';
 import 'package:start_app/util/assets.dart';
 import 'package:start_app/util/shared_pref.dart';
 
@@ -26,7 +27,14 @@ class _SplashScreenState extends State<SplashScreen> {
         return;
       }
 
-      Navigator.pushNamed(context, Routes.homeScreen);
+      Navigator.pushNamed(
+        context,
+        Routes.homeScreen,
+        arguments: {"number": 1232, "test": "this is tset"},
+      );
+
+      Navigator.push(context,
+          MaterialPageRoute(builder: (_) => HomeScreen(test: "this is test")));
     });
   }
 

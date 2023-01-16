@@ -15,8 +15,16 @@ Route customRouteGenerator(RouteSettings settings) {
       return MaterialPageRoute(builder: (ctx) => LoginScreen());
     case "/images":
       return MaterialPageRoute(builder: (ctx) => IgHomeScreen());
+
     case Routes.homeScreen:
-      return MaterialPageRoute(builder: (ctx) => IgHomeScreen());
+      final args = settings.arguments as Map<String, dynamic>;
+
+      return MaterialPageRoute(
+          builder: (ctx) => IgHomeScreen(
+                test: args['test'],
+                number: args['number'],
+              ));
+
     case Routes.signupScreen:
       return MaterialPageRoute(builder: (ctx) => SignupScreen());
 
