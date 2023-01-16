@@ -3,7 +3,7 @@ import 'package:animation/screens/lottie_screen.dart';
 import 'package:animation/screens/transform_anim_screen.dart';
 import 'package:animation/screens/transform_screen.dart';
 import 'package:flutter/material.dart';
-
+import '../navigation/nav.dart';
 import 'anim_container_screen.dart';
 
 class NavScreen extends StatelessWidget {
@@ -34,8 +34,12 @@ class NavScreen extends StatelessWidget {
                     style: TextStyle(color: Colors.white, fontSize: 16),
                   ),
                   onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (_) => screen['widget']));
+                    // Navigator.push(
+                    //   context,
+                    //   CupertinoPageRoute(builder: (_) => screen['widget']),
+                    // );
+                    Navigator.push(
+                        context, topBottomRoute(child: screen['widget']));
                   });
             }),
       ),
