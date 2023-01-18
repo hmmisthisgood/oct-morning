@@ -1,3 +1,5 @@
+import 'package:animation/screens/custom_clip_screen.dart';
+import 'package:animation/screens/custom_paint_screen.dart';
 import 'package:animation/screens/hero1.dart';
 import 'package:animation/screens/lottie_screen.dart';
 import 'package:animation/screens/transform_anim_screen.dart';
@@ -15,6 +17,8 @@ class NavScreen extends StatelessWidget {
     {"name": "Transform", "widget": TransformScreen()},
     {"name": "Animated Container", "widget": AnimContainerScreen()},
     {"name": "Transform animated builder", "widget": TransformAnimScreen()},
+    {"name": "Custom Clipper screen", "widget": CustomClipScreen()},
+    {"name": "Custom Paint screen", "widget": CustomPaintSCreen()},
   ];
 
   @override
