@@ -1,16 +1,38 @@
-# start_app
+### Flutter build commands
 
-A new Flutter project.
+#### flutter build apk
 
-## Getting Started
+Generates a fat apk in release mode.
+Release build usually takes longer as it has to
+build resources in an optimized way.
 
-This project is a starting point for a Flutter application.
+This apk contains code for all CPU abi/arch.
+For example its size is : 30 mb
 
-A few resources to get you started if this is your first Flutter project:
+```bash
+flutter build apk
+```
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### Splitted apks
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Creates multiple(three) apk files instead of one big/fat apk file. The size of splitted is smaller than the fat apk.
+The size of each splitted apk is : 19.8 mb
+
+
+```
+flutter build apk --split-per-abi
+
+```
+
+
+
+### AppBundle
+Required app format to upload in the play store. 
+
+It is designed by Google in a way that it decreses the download size for users. 
+
+
+
+```
+flutter build appbundle
+```
