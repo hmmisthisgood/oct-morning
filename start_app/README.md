@@ -36,3 +36,26 @@ It is designed by Google in a way that it decreses the download size for users.
 ```
 flutter build appbundle
 ```
+
+### generate release key
+
+Create a folder release-keys at current directory:
+```
+mkdir release-keys
+
+```
+Now create the key:
+```bash
+
+ keytool -genkey -v -keystore ./release-keys/release-keystore.jks -keyalg RSA -keysize 2048 -validity 10000 -alias upload
+
+```
+> where upload: is the name of the key
+
+
+### list tthe details of key
+```bash
+
+ keytool -list -v -keystore ./release-keys/release-keystore.jks -alias upload -storepass password -keypass password
+
+```
