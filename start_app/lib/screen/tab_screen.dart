@@ -3,8 +3,6 @@ import 'package:start_app/screen/ig_post_screen.dart';
 import 'package:start_app/screen/ss.dart';
 
 class TabScreen extends StatelessWidget {
-  const TabScreen({super.key});
-
   PreferredSizeWidget buildTabBar() {
     return TabBar(
       // isScrollable: true,

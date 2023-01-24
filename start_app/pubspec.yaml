@@ -1,7 +1,9 @@
 name: start_app
 version: 1.0.0+1
 environment:
-  sdk: ">=2.18.2 <3.0.0"
+  sdk: ">=2.12.0 <3.0.0"
+
+# 2.18.0
 
 dependencies:
   flutter:
@@ -19,6 +21,7 @@ dependencies:
   file_picker: ^5.2.5
   permission_handler: ^10.2.0
   image_picker: ^0.8.6
+  easy_localization: ^3.0.1
 
   # data persistence
   shared_preferences: ^2.0.15
@@ -26,8 +29,7 @@ dependencies:
   # firebase pacakages
   firebase_core: ^2.4.0 # 3.0.0
 
-  firebase_auth: ^4.2.2  # 2.5.0
-
+  firebase_auth: ^4.2.2 # 2.5.0
 
   google_sign_in: ^5.4.2
   # firebase_crashlytics: ^3.0.8
@@ -41,8 +43,8 @@ dependencies:
 
 dev_dependencies:
   change_app_package_name: ^1.1.0
-  flutter_test:
-    sdk: flutter
+  # flutter_test:
+  #   sdk: flutter
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -67,6 +69,7 @@ flutter:
     - asset/icons/
     - asset/images/
     - asset/fonts/
+    - asset/translations/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

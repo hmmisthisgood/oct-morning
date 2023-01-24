@@ -1,0 +1,18 @@
+{
+    "appName": "Trendy app",
+    "common": {
+      "hello": "नमस्ते {}"
+    },
+    
+  
+    "loginScreen": {
+      "welcomeToApp": "हाम्रो एपमा स्वागत छ",
+      "emailHint": "आफ्नो इमेल लेख्नुहोस ",
+      "passwordHint": "आफ्नो पासवर्ड लेख्नुहोस",
+      "login": "लग - इन",
+      "dontHaveAccount": "अझै अकाउन्ट छैन? साइन अप",
+      "googleSignIn": "गूगल मार्फत साइन इन गर्नुहोस्",
+      "facebookSignIn": "फेसबुक मार्फत साइन इन गर्नुहोस्"
+    }
+  }
+  

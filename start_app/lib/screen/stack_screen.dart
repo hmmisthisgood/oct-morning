@@ -3,8 +3,6 @@ import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:start_app/util/strings.dart';
 
 class StackScreen extends StatelessWidget {
-  const StackScreen({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

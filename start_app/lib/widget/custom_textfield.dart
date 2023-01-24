@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField(
-      {super.key,
-      required this.controller,
+      {required this.controller,
       this.keyboardType = TextInputType.text,
       this.textInputAction = TextInputAction.done,
       this.validator,

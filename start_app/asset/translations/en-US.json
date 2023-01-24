@@ -1,0 +1,16 @@
+{
+  "appName": "Trendy app",
+  "common": {
+    "hello": "Hello {}"
+  },
+
+  "loginScreen": {
+    "welcomeToApp": "Welcom to the app",
+    "emailHint": "Enter your email",
+    "passwordHint": "Enter your Password",
+    "login": "Login",
+    "dontHaveAccount": "Don't have an account yet? Sign Up",
+    "googleSignIn": "Sign In With Google",
+    "facebookSignIn": "Sign In With Facebook"
+  }
+}

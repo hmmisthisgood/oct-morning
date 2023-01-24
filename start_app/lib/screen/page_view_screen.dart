@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 class PageViewScreen extends StatelessWidget {
-  const PageViewScreen({super.key});
+  const PageViewScreen();
 
   Widget buildNormalPageView() {
     return PageView(

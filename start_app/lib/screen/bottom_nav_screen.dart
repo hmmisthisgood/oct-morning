@@ -4,8 +4,6 @@ import 'package:start_app/screen/tab_screen.dart';
 import 'package:start_app/screen/tiktok_skeleton.dart';
 
 class BottomNavScreen extends StatefulWidget {
-  const BottomNavScreen({super.key});
-
   @override
   State<BottomNavScreen> createState() => _BottomNavScreenState();
 }

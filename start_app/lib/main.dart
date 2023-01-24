@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,6 +13,7 @@ import 'navigation/routes.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
 
   await Firebase.initializeApp();
 
@@ -21,26 +23,41 @@ void main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(create: (_) => ThemeCubit()..initThemes()),
-        BlocProvider(create: (_) => AuthCubit()),
+    return EasyLocalization(
+      supportedLocales: [
+        Locale("en", "US"),
+        Locale("ne", "NP"),
+        Locale("fr", "FR")
       ],
-      child: BlocBuilder<ThemeCubit, ThemeMode>(
-        builder: (context, themeState) {
-          print(themeState);
-          return MaterialApp(
-            title: "My App",
-            navigatorKey: Nav.navKey,
-            theme: CustomTheme.lightTheme,
-            darkTheme: CustomTheme.darkTheme,
-            highContrastDarkTheme: CustomTheme.highContrastDarkTheme,
-            highContrastTheme: CustomTheme.highContrastLightTheme,
-            themeMode: themeState,
-            initialRoute: Routes.spalshScreen,
-            onGenerateRoute: customRouteGenerator,
-          );
-        },
+      path: "asset/translations",
+      fallbackLocale: Locale("en", "en_US"),
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider(create: (_) => ThemeCubit()..initThemes()),
+          BlocProvider(create: (_) => AuthCubit()),
+        ],
+        child: BlocBuilder<ThemeCubit, ThemeMode>(
+          builder: (context, themeState) {
+            // final deviceLanguage = context.deviceLocale;
+            // context.setLocale(deviceLanguage);
+
+            print(themeState);
+            return MaterialApp(
+              title: "My App",
+              navigatorKey: Nav.navKey,
+              theme: CustomTheme.lightTheme,
+              darkTheme: CustomTheme.darkTheme,
+              highContrastDarkTheme: CustomTheme.highContrastDarkTheme,
+              highContrastTheme: CustomTheme.highContrastLightTheme,
+              themeMode: themeState,
+              initialRoute: Routes.spalshScreen,
+              onGenerateRoute: customRouteGenerator,
+              supportedLocales: context.supportedLocales,
+              localizationsDelegates: context.localizationDelegates,
+              locale: context.locale,
+            );
+          },
+        ),
       ),
     );
   }

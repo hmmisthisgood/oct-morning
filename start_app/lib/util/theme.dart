@@ -32,7 +32,7 @@ class CustomTheme {
     scaffoldBackgroundColor: Color(0xff243447),
     primarySwatch: Colors.red,
     hintColor: darkThemeTextColor,
-    iconTheme: IconThemeData(color: Colors.white),
+    // iconTheme: IconThemeData(color: Colors.white),
     textTheme: TextTheme(
       headline1: TextStyle(
           fontSize: 24, color: darkThemeTextColor, fontWeight: FontWeight.bold),

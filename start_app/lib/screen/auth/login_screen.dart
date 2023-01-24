@@ -1,25 +1,25 @@
-import 'dart:io';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:start_app/bloc/theme/theme_cubit.dart';
 import 'package:start_app/util/assets.dart';
 import 'package:start_app/util/extensions.dart';
+import 'package:start_app/util/locale.dart';
+import 'package:start_app/util/locale_keys.dart';
 import 'package:start_app/util/shared_pref.dart';
 import 'package:start_app/util/util_functions.dart';
 import 'package:start_app/widget/custom_textfield.dart';
 
 import '../../navigation/routes.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class LoginScreen extends StatefulWidget {
-  LoginScreen({super.key});
-
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
@@ -144,23 +144,40 @@ class _LoginScreenState extends State<LoginScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("Hello", style: theme.h1),
-                    IconButton(
-                      onPressed: () {
-                        final bool isDarkMode = Functions.isDarkMode(theme);
+                    Text(LocaleKeys.hello.tr(args: ["John"]), style: theme.h1),
+                    Row(
+                      children: [
+                        IconButton(
+                            onPressed: () {
+                              // context.setLocale(nepali);
 
-                        BlocProvider.of<ThemeCubit>(context)
-                            .toggleTheme(isDarkMode);
+                              final currentLocale = context.locale;
 
-                        // context.read<ThemeCubit>().toggleTheme(isDarkMode);
-                      },
-                      icon: Icon(isDarkMode
-                          ? Icons.dark_mode_outlined
-                          : Icons.dark_mode),
-                    )
+                              if (currentLocale == english) {
+                                context.setLocale(nepali);
+                              } else {
+                                context.setLocale(english);
+                              }
+                            },
+                            icon: Icon(FontAwesome.language)),
+                        IconButton(
+                          onPressed: () {
+                            final bool isDarkMode = Functions.isDarkMode(theme);
+
+                            BlocProvider.of<ThemeCubit>(context)
+                                .toggleTheme(isDarkMode);
+
+                            // context.read<ThemeCubit>().toggleTheme(isDarkMode);
+                          },
+                          icon: Icon(isDarkMode
+                              ? Icons.dark_mode_outlined
+                              : Icons.dark_mode),
+                        )
+                      ],
+                    ),
                   ],
                 ),
-                Text("Welcome to the app", style: theme.h1),
+                Text(LocaleKeys.welcomeToApp.tr(), style: theme.h1),
                 SizedBox(height: 40),
                 // Text("Email"),
                 // TextFormField(
@@ -265,12 +282,12 @@ class _LoginScreenState extends State<LoginScreen> {
                     Icons.email_outlined,
                     color: Colors.white,
                   ),
-                  hintText: "test@test.com",
+                  hintText: LocaleKeys.emailHint.tr(),
                 ),
 
                 CustomTextField(
                   controller: passwordController,
-                  hintText: "Enter your password",
+                  hintText: LocaleKeys.passwordHint.tr(),
                   validator: MultiValidator([
                     RequiredValidator(errorText: "Password is required"),
                     MinLengthValidator(5,
@@ -304,7 +321,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   minWidth: double.infinity,
                   color: Colors.purple,
                   child: Text(
-                    "LOGIN",
+                    LocaleKeys.login.tr().toUpperCase(),
                     style: TextStyle(color: Colors.white),
                   ),
                 ),
@@ -314,7 +331,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     Navigator.pushNamed(context, Routes.signupScreen);
                   },
                   child: Text(
-                    "Do not have an account yet? Sign Up".addNewLine(),
+                    LocaleKeys.dontHaveAccount.tr(),
                     // style: TextStyle(fontSize: 16),
                     style: theme.h6,
                   ),
@@ -335,7 +352,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     SizedBox(width: 20),
                     Text(
-                      "Sign in With Google",
+                      LocaleKeys.googleSignIn.tr(),
                       style: TextStyle(
                           // color: Colors.white,
                           fontSize: 16),
@@ -357,7 +374,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     SizedBox(width: 20),
                     Text(
-                      "Sign in With Facebook",
+                      LocaleKeys.facebookSignIn.tr(),
                       style: TextStyle(
                           // color: Colors.white,
                           fontSize: 16),

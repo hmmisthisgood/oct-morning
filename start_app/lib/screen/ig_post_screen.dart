@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:start_app/widget/ig_post.dart';
 
 class IgHomeScreen extends StatelessWidget {
-  const IgHomeScreen({super.key, this.test, this.number});
+  const IgHomeScreen({this.test, this.number});
   final String? test;
   final int? number;
 

@@ -5,8 +5,6 @@ import 'package:start_app/bloc/auth/auth_cubit.dart';
 import 'package:start_app/widget/custom_textfield.dart';
 
 class SignupScreen extends StatefulWidget {
-  SignupScreen({super.key});
-
   @override
   State<SignupScreen> createState() => _SignupScreenState();
 }

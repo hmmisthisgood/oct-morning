@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
 class TikTokSkeleton extends StatelessWidget {
-  const TikTokSkeleton({super.key});
-
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;

@@ -3,8 +3,6 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 class GridViewScreen extends StatelessWidget {
-  GridViewScreen({super.key});
-
   final List<Map<String, dynamic>> apps = [
     {"name": "Camera", "icons": Icons.camera_alt, "bg_color": Colors.red},
     {
