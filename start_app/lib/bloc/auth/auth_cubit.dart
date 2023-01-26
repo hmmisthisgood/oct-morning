@@ -1,7 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:meta/meta.dart';
@@ -18,15 +20,19 @@ class AuthCubit extends Cubit<AuthState> {
       final userCreds = await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: password);
       SharedPref.setUserLoggedIn(true);
-    } on FirebaseAuthException catch (e) {
+    } on FirebaseAuthException catch (e, s) {
       print(e.message);
       Fluttertoast.showToast(msg: e.message ?? "An error occurred");
-    } catch (e) {
+      FirebaseCrashlytics.instance.recordError(e, s);
+    } catch (e, s) {
       print(e);
+      FirebaseCrashlytics.instance.recordError(e, s);
     }
   }
 
   Future<void> signUpWithEmail(String email, String password) async {
+    FirebaseCrashlytics.instance
+        .log("Attempting to sign up with email and passowrd");
     try {
       emit(AuthLoading());
       final userCreds = await FirebaseAuth.instance
@@ -40,14 +46,21 @@ class AuthCubit extends Cubit<AuthState> {
     } on FirebaseAuthException catch (e, s) {
       print(e.code);
       print(e.message);
+
       print(s);
       Fluttertoast.showToast(msg: e.message ?? "An error occurred");
 
       emit(AuthError(errorMessage: e.message ?? "An error occurred"));
+
+      FirebaseCrashlytics.instance.setUserIdentifier(email);
+      FirebaseCrashlytics.instance.recordError(e, s);
     } catch (e, s) {
       print(e);
       print(s);
+
+      FirebaseCrashlytics.instance.setUserIdentifier(email);
       emit(AuthError(errorMessage: "An error occurred"));
+      FirebaseCrashlytics.instance.recordError(e, s);
     }
   }
 

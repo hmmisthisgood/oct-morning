@@ -1,3 +1,4 @@
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:start_app/screen/home_screen.dart';
 import 'package:start_app/util/assets.dart';
@@ -19,6 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   void checkLoggedInStatusAndNavigate() async {
     final isLoggedIn = await SharedPref.getUserLoggedIn();
+    FirebaseCrashlytics.instance.log("Checking user's login status");
     await Future.delayed(Duration(milliseconds: 1000), () {
       if (isLoggedIn == false) {
         Navigator.pushNamed(context, Routes.loginScreen);
